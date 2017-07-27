@@ -12,21 +12,24 @@ class LRUCacheProblem extends CodingProblem{
 
     val mb = 1024*1024
     val runtime = Runtime.getRuntime
+    
+    val cache = LRUCache(40)
+    for (
+      x <- 10000000 to 10000041
+    ) {
+      cache.set(s"$x",s"$x")
+    }
+
     logger.info("** Used Memory:  " + (runtime.totalMemory - runtime.freeMemory) / mb)
     logger.info("** Free Memory:  " + runtime.freeMemory / mb)
     logger.info("** Total Memory: " + runtime.totalMemory / mb)
     logger.info("** Max Memory:   " + runtime.maxMemory / mb)
 
-    val cache = LRUCache(40)
     cache.printCache()
 
-    cache.set("a","a")
-    cache.set("b","b")
-    cache.set("c","c")
-    cache.set("d","d")
 
     for (
-      x <- 1 to 5000000
+      x <- 1 to 50000000
     ) {
       cache.set(s"$x",s"$x")
     }
@@ -43,7 +46,9 @@ class LRUCacheProblem extends CodingProblem{
     logger.info("** Total Memory: " + runtime.totalMemory / mb)
     logger.info("** Max Memory:   " + runtime.maxMemory / mb)
     System.gc()
-    Thread.sleep(100000)
+    Thread.sleep(1000)
+
+    println("")
     logger.info("** Used Memory:  " + (runtime.totalMemory - runtime.freeMemory) / mb)
     logger.info("** Free Memory:  " + runtime.freeMemory / mb)
     logger.info("** Total Memory: " + runtime.totalMemory / mb)
@@ -58,8 +63,8 @@ class LRUCacheProblem extends CodingProblem{
 
       def set(key: String, value: String) = {
         if (currentSize == size) {
+          nodePointers.-=(orderedList.tail.get.key)
           orderedList.deleteFromTail()
-          nodePointers.-=(key)
           currentSize -= 1
         }
         val n = nodePointers.get(key)
@@ -68,7 +73,7 @@ class LRUCacheProblem extends CodingProblem{
           node.value = value
           orderedList.moveToFront(node)
         } else {
-          val n = MyNode(None,None,value)
+          val n = MyNode(None, None, key, value)
           orderedList.addToFront(n)
           nodePointers.+=((key,n))
           currentSize += 1
@@ -93,7 +98,7 @@ class LRUCacheProblem extends CodingProblem{
 
 
 
-    case class MyNode(var prev: Option[MyNode], var next: Option[MyNode], var value: String){
+    case class MyNode(var prev: Option[MyNode], var next: Option[MyNode],var key: String, var value: String){
       override def equals(obj: scala.Any): Boolean = {
         obj match {
           case x: MyNode => x.value == value
@@ -138,11 +143,13 @@ class LRUCacheProblem extends CodingProblem{
 
       def deleteFromTail(): Unit = {
         if (tail.isDefined) {
-          val last = tail.get
+          var last = tail.get
+
           tail = last.prev
           tail.foreach(_.next = None)
           last.prev = None
           last.next = None
+          last = null
         }
       }
       def printList() = {
