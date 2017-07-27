@@ -35,7 +35,7 @@ case class ListAToListListA() extends MyLogging with CodingProblem {
     println(s"Brents time   = ${t4 - t2}")
 
     val t = "asdf"
-    t.spl
+//    t.spl
   }
 
 
