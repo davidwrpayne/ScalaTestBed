@@ -12,7 +12,7 @@ class LRUCacheProblem extends CodingProblem{
 
     val mb = 1024*1024
     val runtime = Runtime.getRuntime
-    
+
     val cache = LRUCache(40)
     for (
       x <- 10000000 to 10000041
