@@ -1,14 +1,13 @@
 package work.payne
 
-import work.payne.challenges.RepeatPatternProblem
 
-import scala.concurrent.{Await, Future}
+import spray.http._
+import work.payne.testScripts.Script1
+
+import scala.util.{Failure, Success, Try}
 
 object Boot extends App with MyLogging {
-
-  val problem = new RepeatPatternProblem
-  problem.run()
-
+  Script1().run()
 }
 
 
