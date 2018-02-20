@@ -1,13 +1,13 @@
 package work.payne
 
-
-import spray.http._
-import work.payne.testScripts.Script1
-
-import scala.util.{Failure, Success, Try}
+import work.payne.ImageStuff.ImageManipulation
+import work.payne.challenges.{DynamicArray, HRSolveArrays, LRUCacheProblem}
 
 object Boot extends App with MyLogging {
-  Script1().run()
+
+
+   new ImageManipulation().run()
+
 }
 
 
