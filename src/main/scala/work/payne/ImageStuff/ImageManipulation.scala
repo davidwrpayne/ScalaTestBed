@@ -29,8 +29,9 @@ class ImageManipulation {
     val copyImage = deepCopy(image)
 
     val pixelData: Raster = copyImage.getData
-
+    ???
   }
+
 
 
 

@@ -1,12 +1,12 @@
 package work.payne
 
 import work.payne.ImageStuff.ImageManipulation
-import work.payne.challenges.{DynamicArray, HRSolveArrays, LRUCacheProblem}
+import work.payne.challenges.{DynamicArray, FindNthSmallestNumber, HRSolveArrays, LRUCacheProblem}
 
 object Boot extends App with MyLogging {
 
 
-   new ImageManipulation().run()
+   new FindNthSmallestNumber().run()
 
 }
 
