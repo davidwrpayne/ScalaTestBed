@@ -1,12 +1,11 @@
 package work.payne
 
-import work.payne.ImageStuff.ImageManipulation
-import work.payne.challenges.{DynamicArray, FindMaxConsecutiveSequence, FindNthSmallestNumber, HRSolveArrays, LRUCacheProblem}
+import work.payne.challenges.cracking.Problem1_1
 
 object Boot extends App with MyLogging {
 
 
-   new FindMaxConsecutiveSequence().run()
+   new Problem1_1().run()
 
 }
 

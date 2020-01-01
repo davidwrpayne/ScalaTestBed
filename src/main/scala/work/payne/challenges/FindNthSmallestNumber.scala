@@ -1,7 +1,5 @@
 package work.payne.challenges
 
-import com.sun.javaws.exceptions.InvalidArgumentException
-import com.sun.tools.corba.se.idl.InvalidArgument
 
 import scala.collection.mutable
 import scala.util.Random
