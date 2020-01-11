@@ -34,6 +34,7 @@ class FindMaxConsecutiveSequence extends CodingProblem {
      input.foreach( i =>
        if(!inGroupHash.apply(i)) {
          inGroupHash.+=(i)
+
          // if last group was larger then largest keep it.
          (currentGroup, largestGroup) match {
            case (Some((min,max)),Some((lastMin,lastMax))) if (lastMax-lastMin) < (max - min) => largestGroup = currentGroup
@@ -42,17 +43,22 @@ class FindMaxConsecutiveSequence extends CodingProblem {
          }
           currentGroup =  Some((i,i))
 
+
           // look left
           var j = i
           while(seenHash(j-1)) {
+
             inGroupHash.+=(j-1)
             currentGroup = Some((j-1,currentGroup.get._2))
+
             j = j - 1
           }
          j = i
           while(seenHash(j+1)) {
+
             inGroupHash.+=(j+1)
             currentGroup = Some((currentGroup.get._1, j+1))
+
             j = j + 1
           }
        }

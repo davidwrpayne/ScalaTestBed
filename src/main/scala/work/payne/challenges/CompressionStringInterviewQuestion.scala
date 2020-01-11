@@ -13,22 +13,22 @@ case class CompressionStringInterviewQuestion() extends MyLogging with CodingPro
     val input = "aaaabbcc"
 
 //    val timer = System.nanoTime()
-    val res = compressNonRecursive(input)
+//    val res = compressNonRecursive(input)
 //    val endTime = System.nanoTime()
 
 //    val resultTime = (endTime - timer)
 //    println(s"It took: $resultTime nanoseconds\n")
     println(s" inputLength = ${input.size}")
-    println(s" res   = $res")
+//    println(s" res   = $res")
 
 //    val timerREC = System.nanoTime()
-    val resREC = compressNonRecursive(input)
+//    val resREC = compressNonRecursive(input)
 //    val endTimeREC = System.nanoTime()
 
 //    val resultTimeREC = (endTimeREC - timerREC)
 //    println(s"It took: $resultTimeREC nanoseconds \n")
     println(s" inputLength = ${input.size}")
-    println(s" res   = $resREC")
+//    println(s" res   = $resREC")
   }
 
 
@@ -54,31 +54,31 @@ case class CompressionStringInterviewQuestion() extends MyLogging with CodingPro
   }
 
 
-
-  def compressNonRecursive(input: String):String = {
-
-    val i = input.iterator
-    var lastChar: Option[Char] = None
-    var curChar: Option[Char] = None
-    var count: Int = 0
-    val result = mutable.StringBuilder.newBuilder
-    while(i.hasNext) {
-      curChar = Some(i.next())
-      if(lastChar.contains(curChar.get)) {
-        count += 1
-      } else {
-        if( lastChar.isDefined && count > 0) {
-          result.append(lastChar.get).append(count)
-        }
-        lastChar = curChar
-        count = 1
-      }
-    }
-    if( lastChar.isDefined && count > 0) {
-      result.append(lastChar.get).append(count)
-    }
-    result.toString()
-  }
+//
+//  def compressNonRecursive(input: String):String = {
+//
+//    val i = input.iterator
+//    var lastChar: Option[Char] = None
+//    var curChar: Option[Char] = None
+//    var count: Int = 0
+//    val result = mutable.StringBuilder.newBuilder
+//    while(i.hasNext) {
+//      curChar = Some(i.next())
+//      if(lastChar.contains(curChar.get)) {
+//        count += 1
+//      } else {
+//        if( lastChar.isDefined && count > 0) {
+//          result.append(lastChar.get).append(count)
+//        }
+//        lastChar = curChar
+//        count = 1
+//      }
+//    }
+//    if( lastChar.isDefined && count > 0) {
+//      result.append(lastChar.get).append(count)
+//    }
+//    result.toString()
+//  }
 
 
 
